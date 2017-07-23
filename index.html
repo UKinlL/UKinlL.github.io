@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>svg</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
+        div{text-align: center;font-size: 5em;color: red}
+        #intro div{height: 734px;width:90%;margin: 0 auto;}
+        #div1{background: palevioletred}
+        #div2{background: palegreen}
+        #div3{background: gray}
+        #div4{background: cadetblue}
+        #intro{height: 2936px;width:100%;top:0px;display:block;background: Radial-gradient(white, #34352C);position:fixed;transition:top 1s;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oIntro = document.getElementById('intro')
+            var onOff = true;
+            window.onmousewheel = function(ev){
+                var ev = ev || event
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                console.log(nowTop)
+                if(onOff){
+                    onOff = false
+                    if(ev.deltaY > 0 && nowTop > -2202){
+                        oIntro.style.top = nowTop - 734 + 'px';
+                    } else if(ev.deltaY < 0 && nowTop < 0){
+                        oIntro.style.top = nowTop + 734 + 'px';
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                }
+            }
+        }
+    </script>
 </head>
-
 <body>
-  <h1>learn svg</h1>
-  <a href='./myJD/index.html'>我的作品</a>
-  <div class="svg">
-    <svg>
-         <line x1="0" y1="0" x2="200" y2="200"
-  style="stroke:rgb(255,0,0);stroke-width:6;stroke-dasharray: 5;stroke-dashoffset:5"/>
-        <circle cx="240" cy="80" r="60"style="stroke: gray;stroke-dasharray: 5,5;stroke-dashoffset:5"/>
-         <path d="M150 0 L75 200 L225 200 z" stroke="red"/>
-    </svg>
-  </div>
+    <div id='intro'>
+        <div id ='div1'>1111</div>
+        <div id ='div2'>2222</div>
+        <div id ='div3'>3333</div>
+        <div id ='div4'>4444</div>
+    </div>
 </body>
-
 </html>
