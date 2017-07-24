@@ -7,8 +7,9 @@
     <title>Document</title>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
-        ul{display: block;margin: 15vh auto 0;width: 70vw;padding-left: 5vw;}
-        li{list-style: none;display: inline-block;width: 20vw;text-align: center;margin-left: 2vw;}
+        li{list-style: none}
+        #div3 ul{display: block;margin: 15vh auto 0;width: 70vw;padding-left: 5vw;}
+        #div3 li{display: inline-block;width: 20vw;text-align: center;margin-left: 2vw;float: left;}
         #div1,#div2,#div3,#div4{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px -15px 25px 5px  #888888;position: relative;}
         #div1{overflow: hidden;color: rgb(18,53,85);}
         #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
@@ -21,7 +22,7 @@
         #div45{background: url('./img/7.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -2}
         #div21{font-size: 5vh;padding-top: 10vh;text-align: center;}
         #div31{font-size: 5vh;padding-top: 10vh;text-align: center;}
-        #div41{font-size: 5vh;padding-top: 10vh;text-align: center;}
+        #div41{font-size: 5vh;padding-top: 5vh;text-align: center;}
         #div22{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
         #div32{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
         #div42{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
@@ -32,7 +33,14 @@
         #div33 h4{margin:5vh 0 5vh 0;font-size: 3vh;color:blue}
         #div33 p{font-size: 2vh;}
         #div33 img{height: 10vh;}
-        #div4{}
+        #div4 img{width: 16vw;margin:3vh;box-shadow: 0 0 2vh #888888}
+        #div4 ul{display: block;width: 60vw;margin: 0 auto;}
+        #div4 li{display: inline-block;position: relative;}
+        #div4 ul div{display: none;}
+        #div4 ul p{display: none;color:white;font-size: 3vh;text-align: center;}
+        #div4 a:hover>img{box-shadow: 0 0 2vh 1vh blue}
+        #div4 a:hover>div{display: block;background: black;opacity: 0.5;position: absolute;width:16vw;height:16vw;left: 3vh;top:3vh}
+        #div4 a:hover>p{display: block;position: absolute;width:12vw;left:5vh;top:5vh;}
         #intro{height: 2936px;width:100%;top:0px;display:block;background: linear-gradient(white, white);position:fixed;transition:top 1s;}
     </style>    
     <script>
@@ -159,6 +167,44 @@
             <div id='div45'></div>
             <div id='div41'>我的作品</div>
             <div id='div42'></div>
+            <ul>
+                <li><a href=""><img src="./img/01.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+                <li><a href=""><img src="./img/02.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+                <li><a href=""><img src="./img/03.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+                <li><a href=""><img src="./img/04.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+                <li><a href=""><img src="./img/05.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+                <li><a href=""><img src="./img/06.jpg" alt="">
+                        <div>
+                        </div>
+                        <p>文本描述</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </body>
