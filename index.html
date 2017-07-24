@@ -43,77 +43,6 @@
         #div4 a:hover>p{display: block;position: absolute;width:12vw;left:5vh;top:5vh;}
         #intro{height: 2936px;width:100%;top:0px;display:block;background: linear-gradient(white, white);position:fixed;transition:top 1s;}
     </style>    
-    <script>
-        window.onload = function(){
-            var oIntro = document.getElementById('intro')
-            var onOff = true;
-            var hei = window.innerHeight;
-            var aDiv =oIntro.getElementsByTagName('div')
-            var n = null;
-            var aDiv1Img = oIntro.getElementsByTagName('img')
-            //intro图片活动
-            //调整窗口后自动回到当前分支
-            window.onresize = function(){
-                hei = window.innerHeight;   
-                oIntro.style.top = hei*n + 'px'
-            }
-            //鼠标滚轮控制器
-            window.onmousewheel = function(ev){
-                var ev = ev || event
-                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-                var nowTop = parseInt(computedStyle.top)
-                console.log(nowTop)
-                if(onOff){
-                    onOff = false
-                    if(ev.deltaY > 0 && nowTop > -hei*3){
-                        oIntro.style.top = nowTop - hei + 'px';
-                    } else if(ev.deltaY < 0 && nowTop < 0){
-                        oIntro.style.top = nowTop + hei + 'px';
-                    }
-                    setTimeout(function(){onOff = true},1000)
-                    n = Math.floor(parseInt(oIntro.style.top)/hei)
-                }
-            }
-            //键盘方向控制器
-            window.onkeydown = function(ev){
-                var ev = ev || event
-                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-                var nowTop = parseInt(computedStyle.top)
-                if(onOff){
-                    onOff = false
-                    switch (ev.keyCode){
-                        case 40:
-                        if(nowTop > -hei*3){
-                            oIntro.style.top = nowTop - hei + 'px';
-                        }
-                        break;
-                        case 38:
-                        if(nowTop < 0){
-                            oIntro.style.top = nowTop + hei + 'px';
-                        }
-                        break;
-                    }
-                    setTimeout(function(){onOff = true},1000)
-                }
-            }
-            //触屏控制器
-            window.addEventListener('touchmove',function(){
-                var ev = ev.targetTouches[0] || event.targetTouches[0]
-                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-                var nowTop = parseInt(computedStyle.top)
-                if(onOff){
-                    onOff = false
-                    if(ev.clientY > 0 && nowTop > -hei*3){
-                        oIntro.style.top = nowTop - hei + 'px';
-                    } else if(ev.clientY < 0 && nowTop < 0){
-                        oIntro.style.top = nowTop + hei + 'px';
-                    }
-                    setTimeout(function(){onOff = true},1000)
-                    n = Math.floor(parseInt(oIntro.style.top)/hei)
-                }
-            })
-        }
-    </script>
 </head>
 <body>
     <div id='intro'>
@@ -207,5 +136,74 @@
             </ul>
         </div>
     </div>
+    <script>
+        var oIntro = document.getElementById('intro')
+        var onOff = true;
+        var hei = window.innerHeight;
+        var aDiv =oIntro.getElementsByTagName('div')
+        var n = null;
+        var aDiv1Img = oIntro.getElementsByTagName('img')
+        //intro图片活动
+        //调整窗口后自动回到当前分支
+        window.onresize = function(){
+            hei = window.innerHeight;   
+            oIntro.style.top = hei*n + 'px'
+        }
+        //鼠标滚轮控制器
+        window.onmousewheel = function(ev){
+            var ev = ev || event
+            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+            var nowTop = parseInt(computedStyle.top)
+            console.log(nowTop)
+            if(onOff){
+                onOff = false
+                if(ev.deltaY > 0 && nowTop > -hei*3){
+                    oIntro.style.top = nowTop - hei + 'px';
+                } else if(ev.deltaY < 0 && nowTop < 0){
+                    oIntro.style.top = nowTop + hei + 'px';
+                }
+                setTimeout(function(){onOff = true},1000)
+                n = Math.floor(parseInt(oIntro.style.top)/hei)
+            }
+        }
+        //键盘方向控制器
+        window.onkeydown = function(ev){
+            var ev = ev || event
+            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+            var nowTop = parseInt(computedStyle.top)
+            if(onOff){
+                onOff = false
+                switch (ev.keyCode){
+                    case 40:
+                    if(nowTop > -hei*3){
+                        oIntro.style.top = nowTop - hei + 'px';
+                    }
+                    break;
+                    case 38:
+                    if(nowTop < 0){
+                        oIntro.style.top = nowTop + hei + 'px';
+                    }
+                    break;
+                }
+                setTimeout(function(){onOff = true},1000)
+            }
+        }
+        //触屏控制器
+        window.addEventListener('touchmove',function(){
+            var ev = ev.targetTouches[0] || event.targetTouches[0]
+            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+            var nowTop = parseInt(computedStyle.top)
+            if(onOff){
+                onOff = false
+                if(ev.clientY > 0 && nowTop > -hei*3){
+                    oIntro.style.top = nowTop - hei + 'px';
+                } else if(ev.clientY < 0 && nowTop < 0){
+                    oIntro.style.top = nowTop + hei + 'px';
+                }
+                setTimeout(function(){onOff = true},1000)
+                n = Math.floor(parseInt(oIntro.style.top)/hei)
+            }
+        })
+        </script>
 </body>
 </html>
