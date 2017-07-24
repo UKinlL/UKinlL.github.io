@@ -7,18 +7,38 @@
     <title>Document</title>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
-        div{text-align: center;font-size: 5em;color: red}
-        #intro div{height: 734px;width:90%;margin: 0 auto;}
-        #div1{background: palevioletred}
-        #div2{background: palegreen}
-        #div3{background: gray}
+        #div1,#div2,#div3,#div4{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px -15px 25px 5px  #888888;position: relative;}
+        #div1{overflow: hidden;color: rgb(18,53,85);}
+        #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
+        #div1 p{font-size: 5vh;text-align: center;}
+        #div11{height: 100vh;width: 90vw;opacity: 0.5;position: absolute;top:0;z-index: -999;overflow: hidden;}
+        #div1 img{height: 100vh;width: 90vw}
+        #div2 img{width: 15vw;border-radius: 15vw;text-align: center}
+        #div25{background: url('./img/5.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -1}
+        #div21{font-size: 5vh;padding-top: 10vh;text-align: center;}
+        #div22{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
+        #div23{text-align: center;margin-top: 5vh;}
+        #div24{text-align: center;}
+        #div24 p{display:block;width: 60vw;margin:8vh auto 0;font-size: 2vh; }
+        #div24 p:last-child{font-size: 4vh;font-weight: 900;color: blue;margin-top: 3vh;}
         #div4{background: cadetblue}
-        #intro{height: 2936px;width:100%;top:0px;display:block;background: Radial-gradient(white, #34352C);position:fixed;transition:top 1s;}
-    </style>
+        #intro{height: 2936px;width:100%;top:0px;display:block;background: linear-gradient(white, white);position:fixed;transition:top 1s;}
+    </style>    
     <script>
         window.onload = function(){
             var oIntro = document.getElementById('intro')
             var onOff = true;
+            var hei = window.innerHeight;
+            var aDiv =oIntro.getElementsByTagName('div')
+            var n = null;
+            var aDiv1Img = oIntro.getElementsByTagName('img')
+            //intro图片活动
+            //调整窗口后自动回到当前分支
+            window.onresize = function(){
+                hei = window.innerHeight;   
+                oIntro.style.top = hei*n + 'px'
+            }
+            //鼠标滚轮控制器
             window.onmousewheel = function(ev){
                 var ev = ev || event
                 var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
@@ -26,10 +46,33 @@
                 console.log(nowTop)
                 if(onOff){
                     onOff = false
-                    if(ev.deltaY > 0 && nowTop > -2202){
-                        oIntro.style.top = nowTop - 734 + 'px';
+                    if(ev.deltaY > 0 && nowTop > -hei*3){
+                        oIntro.style.top = nowTop - hei + 'px';
                     } else if(ev.deltaY < 0 && nowTop < 0){
-                        oIntro.style.top = nowTop + 734 + 'px';
+                        oIntro.style.top = nowTop + hei + 'px';
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                    n = Math.floor(parseInt(oIntro.style.top)/hei)
+                }
+            }
+            //键盘方向控制器
+            window.onkeydown = function(ev){
+                var ev = ev || event
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                if(onOff){
+                    onOff = false
+                    switch (ev.keyCode){
+                        case 40:
+                        if(nowTop > -hei*3){
+                            oIntro.style.top = nowTop - hei + 'px';
+                        }
+                        break;
+                        case 38:
+                        if(nowTop < 0){
+                            oIntro.style.top = nowTop + hei + 'px';
+                        }
+                        break;
                     }
                     setTimeout(function(){onOff = true},1000)
                 }
@@ -39,8 +82,30 @@
 </head>
 <body>
     <div id='intro'>
-        <div id ='div1'>1111</div>
-        <div id ='div2'>2222</div>
+        <div id ='div1'>
+            <h3>您好，我的名字叫区（ou）仕发</h3>
+            <p>一名正在努力的准前端</p>
+            <div id='div11'>
+                <img src="./img/intro1.jpg" alt="">
+            </div>
+        </div>
+        <div id ='div2'>
+            <div id='div25'></div>
+            <div id='div21'>about me</div>
+            <div id='div22'></div>
+            <div id='div23'><img src="./img/myphoto.png" alt=""></div>
+            <div id='div24'>
+                <p>
+                    我叫区仕发，28岁，坐标成都，是一名正在努力的准前端工程师。虽不是计算机专业出身，但庆幸的是个人学习能力较强，同时还有资深前端的好朋友帮助下，系统性地掌握前端所需技能。
+                </p>
+                <p>
+                    我相信一句话，never too late。我想我缺的只是一个机会，一个成长的机会。在我成长为一名资深前端前，我将坚持：
+                </p>
+                <p>
+                    1000 lines code per day at least
+                </p>
+            </div>
+        </div>
         <div id ='div3'>3333</div>
         <div id ='div4'>4444</div>
     </div>
