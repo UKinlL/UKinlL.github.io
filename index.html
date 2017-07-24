@@ -7,21 +7,32 @@
     <title>Document</title>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
+        ul{display: block;margin: 15vh auto 0;width: 70vw;padding-left: 5vw;}
+        li{list-style: none;display: inline-block;width: 20vw;text-align: center;margin-left: 2vw;}
         #div1,#div2,#div3,#div4{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px -15px 25px 5px  #888888;position: relative;}
         #div1{overflow: hidden;color: rgb(18,53,85);}
         #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
         #div1 p{font-size: 5vh;text-align: center;}
-        #div11{height: 100vh;width: 90vw;opacity: 0.5;position: absolute;top:0;z-index: -999;overflow: hidden;}
+        #div11{height: 100vh;width: 90vw;opacity: 0.5;position: absolute;top:0;z-index: -5;overflow: hidden;}
         #div1 img{height: 100vh;width: 90vw}
         #div2 img{width: 15vw;border-radius: 15vw;text-align: center}
-        #div25{background: url('./img/5.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -1}
+        #div25{background: url('./img/5.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -4}
+        #div35{background: url('./img/6.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -3}
+        #div45{background: url('./img/7.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -2}
         #div21{font-size: 5vh;padding-top: 10vh;text-align: center;}
+        #div31{font-size: 5vh;padding-top: 10vh;text-align: center;}
+        #div41{font-size: 5vh;padding-top: 10vh;text-align: center;}
         #div22{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
+        #div32{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
+        #div42{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
         #div23{text-align: center;margin-top: 5vh;}
         #div24{text-align: center;}
         #div24 p{display:block;width: 60vw;margin:8vh auto 0;font-size: 2vh; }
         #div24 p:last-child{font-size: 4vh;font-weight: 900;color: blue;margin-top: 3vh;}
-        #div4{background: cadetblue}
+        #div33 h4{margin:5vh 0 5vh 0;font-size: 3vh;color:blue}
+        #div33 p{font-size: 2vh;}
+        #div33 img{height: 10vh;}
+        #div4{}
         #intro{height: 2936px;width:100%;top:0px;display:block;background: linear-gradient(white, white);position:fixed;transition:top 1s;}
     </style>    
     <script>
@@ -77,6 +88,22 @@
                     setTimeout(function(){onOff = true},1000)
                 }
             }
+            //触屏控制器
+            window.addEventListener('touchmove',function(){
+                var ev = ev.targetTouches[0] || event.targetTouches[0]
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                if(onOff){
+                    onOff = false
+                    if(ev.clientY > 0 && nowTop > -hei*3){
+                        oIntro.style.top = nowTop - hei + 'px';
+                    } else if(ev.clientY < 0 && nowTop < 0){
+                        oIntro.style.top = nowTop + hei + 'px';
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                    n = Math.floor(parseInt(oIntro.style.top)/hei)
+                }
+            })
         }
     </script>
 </head>
@@ -96,7 +123,7 @@
             <div id='div23'><img src="./img/myphoto.png" alt=""></div>
             <div id='div24'>
                 <p>
-                    我叫区仕发，28岁，坐标成都，是一名正在努力的准前端工程师。虽不是计算机专业出身，但庆幸的是个人学习能力较强，同时还有资深前端的好朋友帮助下，系统性地掌握前端所需技能。
+                    我叫区仕发，28岁，坐标成都，是一名正在努力的准前端工程师。虽不是计算机专业出身，但庆幸的是个人学习能力较强，同时还有资深前端的好朋友帮助，仍是能够慢慢的系统性地掌握前端所需技能。
                 </p>
                 <p>
                     我相信一句话，never too late。我想我缺的只是一个机会，一个成长的机会。在我成长为一名资深前端前，我将坚持：
@@ -106,8 +133,33 @@
                 </p>
             </div>
         </div>
-        <div id ='div3'>3333</div>
-        <div id ='div4'>4444</div>
+        <div id ='div3'>
+            <div id='div35'></div>
+            <div id='div31'>求职意向</div>
+            <div id='div32'></div>
+            <ul id='div33'>
+                <li>
+                    <img src="./img/ps.png" alt="">
+                    <h4>PS 切图</h4>
+                    <p>从PSD上切出页面需要的图片将小图标合成spirts优化。</p>
+                </li>
+                <li>
+                    <img src="./img/web.png" alt="">
+                    <h4>网页制作</h4>
+                    <p>响应式页面,简单不冗余代码。css3流畅动画效果，兼容不同浏览器。</p>
+                </li>
+                <li>
+                    <img src="./img/js.png" alt="">
+                    <h4>前端功能</h4>
+                    <p>用JS完成常见的前端功能特效用AJAX和JSONP读取后台数据。</p>
+                </li>
+            </ul>
+        </div>
+        <div id ='div4'>
+            <div id='div45'></div>
+            <div id='div41'>我的作品</div>
+            <div id='div42'></div>
+        </div>
     </div>
 </body>
 </html>
