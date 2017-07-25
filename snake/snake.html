@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>snake</title>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		div{margin:0;padding:0;}
+		div{width: 8px;height: 8px;border: 1px solid gray;position: absolute;}
+		#se1{margin-left: 200px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBody = document.getElementsByTagName('body')[0];
+			var aDiv = document.getElementsByTagName('div');
+			var aSel =document.getElementsByTagName('select');
+			var oBtn = document.getElementById('btn');
+			var nod = null;
+			var nod1 = null;
+			var head = 168;
+			var tail = 162;
+			var t = 1;
+			var move = false;
+			var snake = [];
+			var str = null;
+			var spe = 500;
+			var grid = 20;
+			
+			
+			//实现蛇的移动
+			function snakeMove(){
+				
+				
+			grid = parseInt(aSel[0].options[aSel[0].selectedIndex].value);
+			spe = aSel[1].options[aSel[1].selectedIndex].value;
+			for(i=0;i<grid*grid;i++){
+					oBody.innerHTML += '<div></div>'
+					aDiv[i].className = i;
+					aDiv[i].style.left = 200 + i%grid * 10 + 'px';
+					aDiv[i].style.top = 60 + Math.floor(i/grid)*10 + 'px';
+				}
+				console.log(aDiv.length)
+			//红点
+				var ran = Math.floor(Math.random()*grid*grid);
+				for(i=0;i <= snake.length;i++){
+					if(ran == snake[i]){
+						ran = Math.floor(Math.random()*grid*grid);
+						aDiv[ran].style.background = 'red';
+					}
+					else{
+						aDiv[ran].style.background = 'blue';
+					}
+				}
+			
+			//蛇
+			for(i = tail;i <= head;i++){
+				snake.push(i);
+				aDiv[i].style.background = 'red';
+				aDiv[i].setAttribute('index','on');
+			}
+			var lrmove = setInterval(function(){
+				head = head + t;
+				console.log(head)
+				switch(t){
+					case 1:
+					if(head%grid == 0){
+						console.log(head)
+						clearInterval(lrmove);
+						alert('u lost');
+					}
+					break;
+					case grid:
+					if(head >= grid*grid){
+						console.log(head)
+						clearInterval(lrmove);
+						alert('u lost');
+					}
+					break;
+					case -grid:
+					if(head < 0){
+						console.log(head)
+						clearInterval(lrmove);
+						alert('u lost');
+					}
+					break;
+					case -1:
+					if((head+1)%grid == 0){
+						console.log(head)
+						clearInterval(lrmove);
+						alert('u lost');
+					}
+					break;
+				}
+				var sft = aDiv[head].getAttribute('index');
+				if(sft === 'on'){
+					clearInterval(lrmove);
+					alert('u lost');
+				}
+				else{
+					aDiv[head].style.background = 'red';
+					aDiv[head].setAttribute('index','on');
+				}
+				/*aDiv[head].style.background = 'red';
+				aDiv[head].setAttribute('index','on');*/
+				snake.push(head);	
+				//alert(snake.length);
+				if(head == ran){
+					ran = Math.floor(Math.random()*grid*grid);
+						for(i=0;i < snake.length;i++){
+							if(ran == snake[i]){
+								ran = Math.floor(Math.random()*grid*grid);
+								aDiv[ran].style.background = 'red';
+							}
+							else{
+								aDiv[ran].style.background = 'blue';
+							}
+						}
+				}
+				else{
+					tail = snake.shift();
+					aDiv[tail].style.background = '';
+					aDiv[tail].removeAttribute('index');
+				}
+				document.onkeydown = function press(ev){
+					var ev = ev || event;
+					var code = ev.keyCode;
+					switch(code){
+						case 39:
+						if(t == -1){
+							t = -1;
+						} else{
+							t = 1;
+						}
+						break;
+						case 40:
+						if(t == -grid){
+						t = -grid;
+						} else{
+							t = grid;
+						}
+						break;
+						case 37:
+						if(t == 1){
+							t = 1;
+						}
+						else{
+							t = -1;
+						}
+						break;
+						case 38:
+						if(t == grid){	
+							t = grid;
+						} else{
+						t = -grid;
+						}
+						break;
+					}
+				}
+				
+			},spe)
+			}	
+
+		oBtn.addEventListener('click',snakeMove);
+		}
+	</script>
+</head>
+<body>
+	<select name="" id="se1">
+		<option value="20">20*20</option>
+		<option value="30">30*30</option>
+		<option value="40">40*40</option>
+	</select>
+	<select name="" id="se2">
+		<option value="300">慢速</option>
+		<option value="100">中速</option>
+		<option value="50">快速</option>
+	</select>
+	<input id='btn' type="button" value='开始游戏'></input>
+</body>
+</html>
