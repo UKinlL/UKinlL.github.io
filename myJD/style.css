@@ -4,7 +4,7 @@
 #search2{position:absolute;left:810px;top:25px;display: block;height:35px;width:50px;background:rgb(241, 2, 21);border:none;}
 #shoppingcar{display: block;height: 35px;width: 192px;background: white;text-align:center;position: absolute;left: 900px;top:25px;border:1px solid #e3e4e5;line-height: 33px;color:rgb(241, 2, 21);}
 
-#hotwords{display:block;width:600px;position:absolute;left:550px;top:100px;font-size: 12px;height: 16px;z-index:2;}
+#hotwords{display:block;width:600px;position:absolute;left:470px;top:100px;font-size: 12px;height: 16px;z-index:2;}
 #hotwords a{margin-right: 10px;}
 #nav{position: absolute;width:1190px;text-align: center;top:130px;}
 #nav li{display:inline;margin-left: 15px;}
