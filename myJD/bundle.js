@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7d126bdab991044e1582"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c8edf03621f7183d3659"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -706,7 +706,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(2)(__webpack_require__.s = 2);
+/******/ 	return hotCreateRequire(3)(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -719,9 +719,50 @@
 /* 1 */
 /***/ (function(module, exports) {
 
+var aLi = document.getElementById('nav2-ul1').getElementsByTagName('li')
+var a2Li = document.getElementById('nav2-ul2').getElementsByTagName('li')
+var n = 0;
+function lunbo(){
+    aLi[n%aLi.length].style.opacity = '0'
+    aLi[n%aLi.length].style.zIndex = '0'
+    aLi[(n+1)%aLi.length].style.opacity = '1'
+    aLi[(n+1)%aLi.length].style.zIndex = '1'
+    a2Li[n%aLi.length].style.background = 'white'
+    a2Li[(n+1)%aLi.length].style.background = 'red'
+    n++;
+}
+
+var timer = setInterval(lunbo,3000);
+
+for(let i=0;i<a2Li.length;i++){
+    a2Li[i].addEventListener('mouseover',function(){
+        clearInterval(timer)
+        for(let i=0;i<a2Li.length;i++){
+            a2Li[i].style.background = 'white'
+            aLi[i].style.opacity = '0'
+            aLi[i].style.zIndex = '0'
+        }
+        a2Li[i].style.background = 'red'
+        aLi[i].style.opacity = '1'
+        aLi[i].style.zIndex = '1'
+        n = i
+    })
+}
+
+for(let i=0;i<a2Li.length;i++){
+    a2Li[i].addEventListener('mouseout',function(){
+        clearInterval(timer)
+        timer = setInterval(lunbo,3000);
+    })
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 var oSlidleft = document.getElementById('slidleft')
 window.onscroll = function(){
-    if(document.body.scrollTop < 1800){
+    if(document.body.scrollTop < 1700){
         oSlidleft.style.display = 'none'
     } else {
         oSlidleft.style.display = 'block'
@@ -776,15 +817,18 @@ function scroTo(ev){
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_index_css__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__css_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrto_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrto_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrto_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__scrto_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lunbo_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lunbo_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__lunbo_js__);
+
 
 
 
