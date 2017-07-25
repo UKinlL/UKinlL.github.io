@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{display: inline-block;margin: 10px}
+        img{width:150px;height:200px;}
+        li div{width:150px;height:100px;overflow:hidden;text-overflow: ellipsis;font-size: 12px;}
+        #more{width: 80vw;height: 20px;line-height: 20px;font-size: 14px;background: gray;border:1px solid black;color: white;margin: 0 auto;text-align: center;display: none;margin-bottom: 50px;}
+    </style>
+</head>
+<body>
+    <div>输入您想要查找的书本名称，按搜索键</div>
+    <input type='text'></input>
+    <input type='button' value='搜索'></input>
+    <div></div>
+    <ol></ol>
+    <div id='more'>加载更多</div>
+    <script>
+        var oDiv = document.getElementById('more');
+        var startNum = 0;
+        function fn(data){
+            var aDiv = document.getElementsByTagName('div');
+            aDiv[1].innerHTML = '豆瓣为你找到的结果为' + data.total + '个'
+            var oOl = document.getElementsByTagName('ol')[0]
+            var html = '';
+            var strBooks = new Array(data.books.length)
+            for(let i=0;i<data.books.length;i++){
+                if(data.books[i].summary == ''){
+                    strBooks[i] = '本书没有相关简介'
+                } else {
+                    strBooks[i] = data.books[i].summary.substring(0,50) + '...'
+                }
+                html = html + '<li>\
+                <img src = "'+ data.books[i].images.large + '"/>\
+                <div>' + strBooks[i] + '</div>\
+                </li>'
+            }
+            oOl.innerHTML += html;
+        }
+        var aDiv = document.getElementsByTagName('div');
+        var aBtn = document.getElementsByTagName('input');
+        aBtn[1].addEventListener('click',function(ev){
+            var myScript = document.createElement('script');
+            var ran = new Date().getTime()
+            var myUrl = "https://api.douban.com/v2/book/search?q=" + aBtn[0].value +"&callback=fn&t=" + ran;
+            myScript.src = myUrl;
+            document.getElementsByTagName('head')[0].appendChild(myScript);
+            document.getElementsByTagName('head')[0].removeChild(myScript);
+            oDiv.style.display = 'block'
+        },false) 
+
+        oDiv.addEventListener('click',function(ev){
+            startNum += 20;
+            var myScript = document.createElement('script');
+            var ran = new Date().getTime()
+            var myUrl = "https://api.douban.com/v2/book/search?q=" + aBtn[0].value +"&callback=fn&t=" + ran + "&start=" + startNum;
+            myScript.src = myUrl;
+            document.getElementsByTagName('head')[0].appendChild(myScript);
+            document.getElementsByTagName('head')[0].removeChild(myScript);
+        })
+    </script>
+</body>
+</html>
