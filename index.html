@@ -14,6 +14,7 @@
         #div3 ul{display: block;margin: 15vh auto 0;width: 70vw;padding-left: 5vw;}
         #div3 li{display: inline-block;width: 20vw;text-align: center;margin-left: 2vw;float: left;}
         #div1,#div2,#div3,#div4,#div5{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px 0px 25px 5px  #888888;position: relative;overflow: hidden;}
+        #div1{visibility:hidden;}
         #div1{overflow: hidden;color: rgb(18,53,85);}
         #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
         #div1 p{font-size: 5vh;text-align: center;}
@@ -48,14 +49,18 @@
         #line{position: absolute;display: block;height: 0.5vh;width: 70vw;background: white;z-index: -1;top:36vh;left:10vw;}
         #myexp{width: 80vw;}
         #myexp div{float:left;width:8vw;margin-left: 8vw; margin-top: 5vh;}
+        #sorry{position: absolute;width: 50vw;height: 50vh;background: palegoldenrod;display: block;z-index: 999;opacity: 1;left:20vw;top:20vh;text-align: center;padding: 5vh 5vw}
         
     </style>    
     <script>
         window.onload = function(){
+            var oSorry =document.getElementById('sorry')
             var oIntro = document.getElementById('intro')
             var onOff = true;
             var hei = window.innerHeight;
             var aDiv =oIntro.getElementsByTagName('div')
+            aDiv[0].style.visibility = 'visible'
+            oSorry.style.display = 'none'
             var n = null;
             var aDiv1Img = oIntro.getElementsByTagName('img')
             //intro图片活动
@@ -123,6 +128,9 @@
     </script>
 </head>
 <body>
+    <div id='sorry'>
+        您好，这是我（区仕发）的简历，由于使用的是github的服务器，同时为了更好的展现自己，使用了window.onload加载的script，所以整个简历加载的较慢。请耐心等候，谢谢！
+    </div>
     <div id='intro'>
         <div id ='div1'>
             <h3>您好，我的名字叫区（ou）仕发</h3>
@@ -203,14 +211,14 @@
                         <p>购物车结算，订单的选择或删除，金额的计算</p>
                     </a>
                 </li>
-                <li><a href="https://ukinll.github.io/notepaper/notepaper.html" target='_blank'><img src="./img/05.jpg" alt="">
+                <li><a href="https://ukinll.github.io/notpaper/notepaper.html" target='_blank'><img src="./img/05.jpg" alt="">
                         <div>
                         </div>
                         <h3>实用小便笺</h3>
                         <p>实用vue制作的生活小便笺，通过locaolstorge记录</p>
                     </a>
                 </li>
-                <li><a href="JavaScript:void(0)"><img src="./img/06.jpg" alt="">
+                <li><a href="JavaScript：void(0)"><img src="./img/06.jpg" alt="">
                         <div>
                         </div>
                         <h3>更多作品制作中...</h3>
