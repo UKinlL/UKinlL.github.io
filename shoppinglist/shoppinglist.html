@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,div,p,span,ul,li,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0}
+        #nav{width:1180px;margin: 50px auto 10px;}
+        a{text-decoration: none;color: black;}
+        #header1{width:1180px;margin: 0 auto;background: rgb(245, 245, 245);height: 50px;border:1px solid gray}
+        #header1 div{float:left;height: 50px;line-height: 50px;}
+        .tit1{width: 136px;height: 80px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit2{width: 250px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit3{width: 200px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit4{width: 146px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit5{width: 146px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit6{width: 146px;position:relative;top:50%;transform: translateY(-50%)}
+        .tit7{width: 146px;position:relative;top:50%;transform: translateY(-50%)}
+        img{width: 80px;height: 80px;}
+        .list{width:1180px;margin: -1px auto 0;border:1px solid gray;height: 80px;position: relative;}
+        .list div{float:left;}
+        img{margin-left: 25px;}
+        .tit5 span{border: 1px solid gray;width: 30px;display: inline-block;text-align: center;margin-left: -1px;font-weight: bold}
+        .tit5 a{text-decoration: none;color: black;width: 30px;display: block}
+        .footer{width: 100%;margin: 50px auto;height: 50px;display: block;}
+        #footer1{width:1180px;margin: 0 auto;background: rgb(245, 245, 245);height: 50px;border:1px solid gray;position:relative;}
+        #footer1 div{width: 110px;height: 50px;display: block;font-size: 14px;line-height: 50px;position: relative}
+        #footer1 p{margin-left: 25px;}
+        .right{float:right}
+        .left{float:left}
+        input{float: left;position:absolute;top:50%;transform: translateY(-50%);z-index: 999}
+        .fixed1{position: fixed;width: 100%;top:0;background:rgb(245, 245, 245);z-index: 99 }
+        .fixed2{position: fixed;width: 100%;bottom:0;background:rgb(245, 245, 245);z-index: 99;margin:0}
+
+    </style>
+</head>
+<body>
+    <div id='nav'>
+        <p class="nav-guide">
+            <a href="index.html">首页</a>
+            &gt;
+            <span>我的购物车</span>
+        </p>
+    </div>
+    <div id='header'>
+        <div id='header1'>
+            <div class='tit1'></div>
+            <div class='tit2'>商品</div>
+            <div class='tit3'>规格</div>
+            <div class='tit4'>单价</div>
+            <div class='tit5'>数量</div>
+            <div class='tit6'>金额</div>
+            <div class='tit7'>操作</div>
+        </div>
+    </div>
+    <div id='copy'>
+        <div class='list'>
+            <div class="tit1">
+                <div class="check-box">
+                    <input type="checkbox" name="checkIterm" class="check-item">
+                    <div class="car-img">
+                        <img src="./05.jpg" alt="商品图片">
+                    </div>
+                </div>
+            </div>
+            <div class="tit2">
+                <div>
+                    <h4>超级好用奔爱透明情侣杯</h4>
+                </div>
+            </div>
+            <div class='tit3'>
+                <p>图案选择：海豚蓝色</p>
+                <p>形状尺寸：迷你胖肚</p>
+            </div>
+            <div class='tit4' style="font-weight: bold;">￥<span class="price">52.50</span></div>
+            <div class="tit5">
+                <span class="cut-cgnum"><a href="javascript:void(0)">-</a></span><!--
+                --><span class="goods-num">1</span><!--
+                --><span class="add-cgnum"><a href="javascript:void(0)">+</a></span>
+            </div>
+            <div class="tit6">
+                ￥<span class="total-money">52.50</span>
+            </div>
+            <div class="tit7">
+                <p id='del' class="item-del"><a href="javascript:void(0)">删除</a></p>
+                <p>移到我的收藏</p>
+            </div>
+        </div>
+    </div>
+    <div class='footer'>
+        <div id='footer1'>
+            <input type="checkbox"></input>
+            <div class='left'>
+                <p>全选</p>
+            </div>
+            <div class='left' id='delselect'>删除选中</div>
+            <div class='left'>选中移入收藏夹</div>
+            <div class='left'>清除下架宝贝</div>
+            <div class='right'>结算</div>
+            <div class='right'>合计￥<span>0</span>元</div>
+            <div class='right'>已选择商品<span>0</span>件</div>
+        </div>
+    </div>
+    <script>
+        var oCopy = document.getElementById('copy')
+        var html = oCopy.innerHTML;
+        for(let i=0;i<14;i++){
+            oCopy.innerHTML += html
+        }
+        var aDiv = document.getElementsByClassName('tit5')
+        var aPrice = document.getElementsByClassName('price')
+        var aSum = document.getElementsByClassName('total-money')
+        var footer = document.getElementsByClassName('footer')[0]
+        var total = footer.getElementsByTagName('span')
+        var aDel = document.getElementsByClassName('item-del')
+        var aList = document.getElementsByClassName('list')
+        var aUp = document.getElementsByClassName('add-cgnum')
+        var aGoods = document.getElementsByClassName('goods-num')
+        var aCut = document.getElementsByClassName('cut-cgnum')
+        var aSel = document.getElementsByTagName('input')
+        var oDel = document.getElementById('delselect')
+        var header =document.getElementById('header')
+
+        function suming(){
+            var toltalmoney = 0
+            var toltalnum = 0
+            for(let i=0;i<aSel.length-1;i++){
+                if(aSel[i].checked){
+                    toltalmoney = toltalmoney + parseFloat(aSum[i].innerHTML)
+                    toltalnum = toltalnum + parseInt(aGoods[i].innerHTML)
+                }
+                total[0].innerHTML = toltalmoney
+                total[1].innerHTML = toltalnum
+            }
+        }
+        for(let i=0;i<aUp.length;i++){
+            aCut[i].addEventListener('click',function(ev){
+                var ev = ev || event
+                var oGood = ev.path[3].getElementsByClassName('goods-num')[0]
+                if(oGood.innerHTML > 0){
+                    oGood.innerHTML = parseInt(oGood.innerHTML) - 1;
+                }
+                var oPrice = ev.path[3].getElementsByClassName('price')[0]
+                var oSum = ev.path[3].getElementsByClassName('total-money')[0]
+                oSum.innerHTML = oGood.innerHTML*oPrice.innerHTML
+                suming()
+            })
+            aUp[i].addEventListener('click',function(ev){
+                var ev = ev || event
+                var oGood = ev.path[3].getElementsByClassName('goods-num')[0]
+                console.log(oGood)
+                oGood.innerHTML = parseInt(oGood.innerHTML) + 1;
+                var oPrice = ev.path[3].getElementsByClassName('price')[0]
+                var oSum = ev.path[3].getElementsByClassName('total-money')[0]
+                oSum.innerHTML = oGood.innerHTML*oPrice.innerHTML
+                suming()
+            })
+        }
+        for(let i=0;i<aDel.length;i++){
+            aDel[i].addEventListener('click',function(ev){
+                var oSum = ev.path[3].getElementsByClassName('total-money')[0]
+                var oNum = ev.path[3].getElementsByClassName('goods-num')[0]
+                if(ev.path[3].getElementsByTagName('input')[0].checked){
+                    total[0].innerHTML = total[0].innerHTML - parseFloat(oSum.innerHTML)
+                    total[1].innerHTML = total[1].innerHTML - parseInt(oNum.innerHTML)
+                }
+                oCopy.removeChild(ev.path[3])
+            })
+        }
+
+        aSel[aSel.length-1].addEventListener('click',function(){
+            if(aSel[aSel.length-1].checked){
+                for(let i=0;i<aSel.length;i++){
+                    aSel[i].checked = true
+                }
+            } else {
+                for(let i=0;i<aSel.length;i++){
+                    aSel[i].checked = false
+                }
+            }
+            suming()
+        })
+
+        for(let i=0;i<aSel.length;i++){
+            aSel[i].addEventListener('click',function(){
+                suming()
+            })
+        }
+
+        oDel.addEventListener('click',function(){
+            for(let i=aSel.length-2;i>=0;i--){
+                console.log(i)
+                if(aSel[i].checked){
+                    oCopy.removeChild(aList[i])
+                }
+            }
+            total[0].innerHTML = 0
+            total[1].innerHTML = 0
+        })
+
+        window.onscroll = function(){
+            console.log(document.body.scrollTop + window.innerHeight)
+            if(document.body.scrollTop >= 85){
+                header.className = 'fixed1'
+            } else {
+                header.className = ''
+            }
+            if(document.body.scrollTop + window.innerHeight > 1250){
+                footer.className = 'footer'
+            } else {
+                footer.className = 'fixed2'
+            }
+        }
+    </script>
+</body>
+</html>
