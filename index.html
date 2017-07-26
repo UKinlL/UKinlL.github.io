@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="web前端个人简历,web前端,区仕发简历,UKinlL,前端个人博客,前端工程师">
+    <meta name="description" content="区仕发WEB前端工程师的个人简历">
+    <meta name="author" content="区仕发,UkinlL">
+    <title>Web前端工程师简历</title>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
         li{list-style: none}
         #div3 ul{display: block;margin: 15vh auto 0;width: 70vw;padding-left: 5vw;}
         #div3 li{display: inline-block;width: 20vw;text-align: center;margin-left: 2vw;float: left;}
-        #div1,#div2,#div3,#div4{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px -15px 25px 5px  #888888;position: relative;}
+        #div1,#div2,#div3,#div4,#div5{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px 0px 25px 5px  #888888;position: relative;overflow: hidden;}
         #div1{overflow: hidden;color: rgb(18,53,85);}
         #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
         #div1 p{font-size: 5vh;text-align: center;}
@@ -20,12 +23,9 @@
         #div25{background: url('./img/5.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -4}
         #div35{background: url('./img/6.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -3}
         #div45{background: url('./img/7.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -2}
-        #div21{font-size: 5vh;padding-top: 10vh;text-align: center;}
-        #div31{font-size: 5vh;padding-top: 10vh;text-align: center;}
-        #div41{font-size: 5vh;padding-top: 5vh;text-align: center;}
-        #div22{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
-        #div32{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
-        #div42{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
+        #div55{background: url('./img/8.jpg');height: 100vh;width: 90vw;position: absolute;background-size: 90vw 100vh;opacity: 0.5;z-index: -1}
+        #div21,#div31,#div41,#div51{font-size: 5vh;padding-top: 10vh;text-align: center;}
+        #div22,#div32,#div42,#div52{display: block;width: 15vh;height:1vh;background: gray;margin:0 auto;}
         #div23{text-align: center;margin-top: 5vh;}
         #div24{text-align: center;}
         #div24 p{display:block;width: 60vw;margin:8vh auto 0;font-size: 2vh; }
@@ -33,16 +33,94 @@
         #div33 h4{margin:5vh 0 5vh 0;font-size: 3vh;color:blue}
         #div33 p{font-size: 2vh;}
         #div33 img{height: 10vh;}
-        #div4 img{width: 16vw;margin:3vh;box-shadow: 0 0 2vh #888888}
+        #div4 img{width: 16vw;height:16vw;margin:3vh;box-shadow: 0 0 2vh #888888}
         #div4 ul{display: block;width: 60vw;margin: 0 auto;}
         #div4 li{display: inline-block;position: relative;}
         #div4 ul div{display: none;}
-        #div4 ul p{display: none;color:white;font-size: 3vh;text-align: center;}
+        #div4 ul h3{display: none;color:white;font-size: 3vh;text-align: center;top:50%}
+        #div4 ul p{display: none;color:white;font-size: 2vh;text-align: center;top:50%}
         #div4 a:hover>img{box-shadow: 0 0 2vh 1vh blue}
         #div4 a:hover>div{display: block;background: black;opacity: 0.5;position: absolute;width:16vw;height:16vw;left: 3vh;top:3vh}
-        #div4 a:hover>p{display: block;position: absolute;width:12vw;left:5vh;top:5vh;}
+        #div4 a:hover>p{display: block;position: absolute;width:12vw;left:20%;top:45%;}
+        #div4 a:hover>h3{display: block;position: absolute;width:12vw;left:20%;top:30%;}
         #intro{height: 2936px;width:100%;top:0px;display:block;background: linear-gradient(white, white);position:fixed;transition:top 1s;}
+        .time{display: block;width: 8vw;height: 7vw;border-radius: 100%;border:1px solid white;float:left;color: blue;font-size: 3vh;text-align: center;padding: 1vh;line-height: 3vw;padding-top: 1vw;margin-left: 7vw;margin-top: 10vh;background: gray}
+        #line{position: absolute;display: block;height: 0.5vh;width: 70vw;background: white;z-index: -1;top:36vh;left:10vw;}
+        #myexp{width: 80vw;}
+        #myexp div{float:left;width:8vw;margin-left: 8vw; margin-top: 5vh;}
+        
     </style>    
+    <script>
+        window.onload = function(){
+            var oIntro = document.getElementById('intro')
+            var onOff = true;
+            var hei = window.innerHeight;
+            var aDiv =oIntro.getElementsByTagName('div')
+            var n = null;
+            var aDiv1Img = oIntro.getElementsByTagName('img')
+            //intro图片活动
+            //调整窗口后自动回到当前分支
+            window.onresize = function(){
+                hei = window.innerHeight;   
+                oIntro.style.top = hei*n + 'px'
+            }
+            //鼠标滚轮控制器
+            window.onmousewheel = function(ev){
+                var ev = ev || event
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                console.log(nowTop)
+                if(onOff){
+                    onOff = false
+                    if(ev.deltaY > 0 && nowTop > -hei*4){
+                        oIntro.style.top = nowTop - hei + 'px';
+                    } else if(ev.deltaY < 0 && nowTop < 0){
+                        oIntro.style.top = nowTop + hei + 'px';
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                    n = Math.floor(parseInt(oIntro.style.top)/hei)
+                }
+            }
+            //键盘方向控制器
+            window.onkeydown = function(ev){
+                var ev = ev || event
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                if(onOff){
+                    onOff = false
+                    switch (ev.keyCode){
+                        case 40:
+                        if(nowTop > -hei*4){
+                            oIntro.style.top = nowTop - hei + 'px';
+                        }
+                        break;
+                        case 38:
+                        if(nowTop < 0){
+                            oIntro.style.top = nowTop + hei + 'px';
+                        }
+                        break;
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                }
+            }
+            //触屏控制器
+            window.addEventListener('touchmove',function(){
+                var ev = ev.targetTouches[0] || event.targetTouches[0]
+                var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
+                var nowTop = parseInt(computedStyle.top)
+                if(onOff){
+                    onOff = false
+                    if(ev.clientY > 0 && nowTop > -hei*3){
+                        oIntro.style.top = nowTop - hei + 'px';
+                    } else if(ev.clientY < 0 && nowTop < 0){
+                        oIntro.style.top = nowTop + hei + 'px';
+                    }
+                    setTimeout(function(){onOff = true},1000)
+                    n = Math.floor(parseInt(oIntro.style.top)/hei)
+                }
+            })
+        }
+    </script>
 </head>
 <body>
     <div id='intro'>
@@ -54,7 +132,7 @@
             </div>
         </div>
         <div id ='div2'>
-            <div id='div25'></div>
+            <div id='div25'></div>  
             <div id='div21'>about me</div>
             <div id='div22'></div>
             <div id='div23'><img src="./img/myphoto.jpg" alt=""></div>
@@ -97,113 +175,68 @@
             <div id='div41'>我的作品</div>
             <div id='div42'></div>
             <ul>
-                <li><a href=""><img src="./img/01.jpg" alt="">
+                <li><a href="https://ukinll.github.io/myJD/index.html" target='_blank'><img src="./img/01.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>商城类页面</h3>
+                        <p>京东主页的布局及前端效果的实现</p>
                     </a>
                 </li>
-                <li><a href=""><img src="./img/02.jpg" alt="">
+                <li><a href="https://ukinll.github.io/doubansearch/doubansearch.html" target='_blank'><img src="./img/02.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>搜索类页面</h3>
+                        <p>利用JSONP通过豆瓣API进行书本搜索，返回搜索结果</p>
                     </a>
                 </li>
-                <li><a href=""><img src="./img/03.jpg" alt="">
+                <li><a href="https://ukinll.github.io/snake/snake.html" target='_blank'><img src="./img/03.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>贪吃蛇demo</h3>
+                        <p>贪吃蛇小游戏</p>
                     </a>
                 </li>
-                <li><a href=""><img src="./img/04.jpg" alt="">
+                <li><a href="https://ukinll.github.io/shoppinglist/shoppinglist.html" target='_blank'><img src="./img/04.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>商城类页面</h3>
+                        <p>购物车结算，订单的选择或删除，金额的计算</p>
                     </a>
                 </li>
-                <li><a href=""><img src="./img/05.jpg" alt="">
+                <li><a href="https://ukinll.github.io/notepaper/notepaper.html" target='_blank'><img src="./img/05.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>实用小便笺</h3>
+                        <p>实用vue制作的生活小便笺，通过locaolstorge记录</p>
                     </a>
                 </li>
-                <li><a href=""><img src="./img/06.jpg" alt="">
+                <li><a href="JavaScript:void(0)"><img src="./img/06.jpg" alt="">
                         <div>
                         </div>
-                        <p>文本描述</p>
+                        <h3>更多作品制作中...</h3>
+                        <p>1000 lines code per day at least</p>
                     </a>
                 </li>
             </ul>
         </div>
-    </div>
-    <script>
-        var oIntro = document.getElementById('intro')
-        var onOff = true;
-        var hei = window.innerHeight;
-        var aDiv =oIntro.getElementsByTagName('div')
-        var n = null;
-        var aDiv1Img = oIntro.getElementsByTagName('img')
-        //intro图片活动
-        //调整窗口后自动回到当前分支
-        window.onresize = function(){
-            hei = window.innerHeight;   
-            oIntro.style.top = hei*n + 'px'
-        }
-        //鼠标滚轮控制器
-        window.onmousewheel = function(ev){
-            var ev = ev || event
-            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-            var nowTop = parseInt(computedStyle.top)
-            console.log(nowTop)
-            if(onOff){
-                onOff = false
-                if(ev.deltaY > 0 && nowTop > -hei*3){
-                    oIntro.style.top = nowTop - hei + 'px';
-                } else if(ev.deltaY < 0 && nowTop < 0){
-                    oIntro.style.top = nowTop + hei + 'px';
-                }
-                setTimeout(function(){onOff = true},1000)
-                n = Math.floor(parseInt(oIntro.style.top)/hei)
-            }
-        }
-        //键盘方向控制器
-        window.onkeydown = function(ev){
-            var ev = ev || event
-            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-            var nowTop = parseInt(computedStyle.top)
-            if(onOff){
-                onOff = false
-                switch (ev.keyCode){
-                    case 40:
-                    if(nowTop > -hei*3){
-                        oIntro.style.top = nowTop - hei + 'px';
-                    }
-                    break;
-                    case 38:
-                    if(nowTop < 0){
-                        oIntro.style.top = nowTop + hei + 'px';
-                    }
-                    break;
-                }
-                setTimeout(function(){onOff = true},1000)
-            }
-        }
-        //触屏控制器
-        window.addEventListener('touchmove',function(){
-            var ev = ev.targetTouches[0] || event.targetTouches[0]
-            var computedStyle = document.defaultView.getComputedStyle(oIntro, null);
-            var nowTop = parseInt(computedStyle.top)
-            if(onOff){
-                onOff = false
-                if(ev.clientY > 0 && nowTop > -hei*3){
-                    oIntro.style.top = nowTop - hei + 'px';
-                } else if(ev.clientY < 0 && nowTop < 0){
-                    oIntro.style.top = nowTop + hei + 'px';
-                }
-                setTimeout(function(){onOff = true},1000)
-                n = Math.floor(parseInt(oIntro.style.top)/hei)
-            }
-        })
-        </script>
+        <div id ='div5'>
+            <div id='div55'></div>
+            <div id='div51'>我的经历</div>
+            <div id='div52'></div>
+            <div class='time'>2008.09-2012.07</div>
+            <div class='time'>2012.07-2014.07</div>
+            <div class='time'>2014.0-2017.03</div>
+            <div class='time'>2017.03-至今</div>
+            <div class='time'>??</br>??</div>
+            <div id="line"></div>
+            <div id='myexp'>
+                <div>毕业于电子科技大学，开始懵懂的进入社会</div>
+                <div>就职于莱宝高科股份有限公司技术开发职位，因管理混乱离职</div>
+                <div>就职于深南电路股份有限公司制程工程师职位，因对制造业的失望以及被前端吸引离职</div>
+                <div>开始我的前端生涯</div>
+                <div>未来还未来，但仍孜孜不倦的探索</div>
+            </div>
+            
+        </div>
 </body>
 </html>
