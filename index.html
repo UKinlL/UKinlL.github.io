@@ -8,6 +8,7 @@
     <meta name="description" content="区仕发WEB前端工程师的个人简历">
     <meta name="author" content="区仕发,UkinlL">
     <title>Web前端工程师简历</title>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
         li{list-style: none}
@@ -16,8 +17,8 @@
         #div1,#div2,#div3,#div4,#div5{height: 100vh;width:90vw;margin: 0 auto;border-radius: 20px;box-shadow: 0px 0px 25px 5px  #888888;position: relative;overflow: hidden;}
         #div1{visibility:hidden;}
         #div1{overflow: hidden;color: rgb(18,53,85);}
-        #div1 h3{font-size: 10vh;text-align: center;margin: 30vh 0 5vh 0;}
-        #div1 p{font-size: 5vh;text-align: center;}
+        #div1 h3{font-size: 10vh;text-align: center;margin: 5vh 0 5vh 0;}
+        #div1 p{font-size: 5vh;text-align: center;margin-bottom: 10vh;}
         #div11{height: 100vh;width: 90vw;opacity: 0.5;position: absolute;top:0;z-index: -5;overflow: hidden;}
         #div1 img{height: 100vh;width: 90vw}
         #div2 img{width: 15vw;border-radius: 15vw;text-align: center}
@@ -34,6 +35,7 @@
         #div33 h4{margin:5vh 0 5vh 0;font-size: 3vh;color:blue}
         #div33 p{font-size: 2vh;}
         #div33 img{height: 10vh;}
+        #div3 li{position: relative;}
         #div4 img{width: 16vw;height:16vw;margin:3vh;box-shadow: 0 0 2vh #888888}
         #div4 ul{display: block;width: 60vw;margin: 0 auto;}
         #div4 li{display: inline-block;position: relative;}
@@ -51,6 +53,10 @@
         #myexp div{float:left;width:8vw;margin-left: 8vw; margin-top: 5vh;}
         #sorry{position: absolute;width: 50vw;height: 50vh;background: palegoldenrod;display: block;z-index: 999;opacity: 1;left:20vw;top:20vh;text-align: center;padding: 5vh 5vw}
         
+        .sk1{display: block;border-radius: 100%;height: 15vh;width: 15vh;background:rgb(245, 245, 245);line-height: 15vh;text-align: center;border:2vh solid rgb(205, 205, 245)}
+        .sk2{border-right:2vh solid palegoldenrod;border-top:2vh solid palegoldenrod;position: absolute;height: 15vh;width: 15vh;border-top-right-radius: 50%;border;border-top-left-radius: 50%;border;}
+
+        #chart{width: 60vw;height: 60vh;}
     </style>    
     <script>
         window.onload = function(){
@@ -124,6 +130,84 @@
                     n = Math.floor(parseInt(oIntro.style.top)/hei)
                 }
             })
+
+            require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('chart')); 
+                
+                var option = {
+                    title:{
+                        text:'个人技能掌握熟练度',
+                        x : 'center',
+                    },
+                    grid:{
+                        show:false
+                    },
+                    tooltip: {
+                        show: false
+                    },
+                    legend: {
+                        data:['']
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : [{value:"html",textStyle:{fontSize:14,fontWeight:'bold'}},   {value:"css",textStyle:{fontSize:14,fontWeight:'bold'}},{value:"javascript",textStyle:{fontSize:14,fontWeight:'bold'}},{value:"vue",textStyle:{fontSize:14,fontWeight:'bold'}},{value:"ajax&jsonp",textStyle:{fontSize:14,fontWeight:'bold'}},{value:"webpack",textStyle:{fontSize:14,fontWeight:'bold'}}],
+                            axisLine:{  
+                                lineStyle:{  
+                                    color:'rgb(18,53,85)',  
+                                    width:1  
+                                },
+                            },
+                            splitLine : {
+                                show : false
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisLine:{  
+                                lineStyle:{  
+                                    color:'rgb(18,53,85)',  
+                                    width:1  
+                                }
+                            },
+                            max : 100,
+                            min : 30,
+                            splitLine : {
+                                show : false
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            "name":"熟练度",
+                            "type":"bar",
+                            "data":[80, 75, 85, 60, 75, 70],
+                            itemStyle:{  
+                                    normal:{color:'#888888'}  
+                                }
+                        }
+                    ]
+                };
+        
+                myChart.setOption(option); 
+                window.addEventListener("resize",function(){                
+                        myChart.resize();
+                });
+            }
+        );
         }
     </script>
 </head>
@@ -135,6 +219,7 @@
         <div id ='div1'>
             <h3>您好，我的名字叫区（ou）仕发</h3>
             <p>一名正在努力的准前端</p>
+            <div id="chart"></div>
             <div id='div11'>
                 <img src="./img/intro1.jpg" alt="">
             </div>
@@ -218,7 +303,7 @@
                         <p>实用vue制作的生活小便笺，通过locaolstorge记录</p>
                     </a>
                 </li>
-                <li><a href="JavaScript:void(0)"><img src="./img/06.jpg" alt="">
+                <li><a href="JavaScript：void(0)"><img src="./img/06.jpg" alt="">
                         <div>
                         </div>
                         <h3>更多作品制作中...</h3>
@@ -234,7 +319,7 @@
             <div class='time'>2008.09-2012.07</div>
             <div class='time'>2012.07-2014.07</div>
             <div class='time'>2014.07-2017.03</div>
-            <div class='time'>2017.03-至今</div>
+            <div class='time'>2017.03 - 至今</div>
             <div class='time'>??</br>??</div>
             <div id="line"></div>
             <div id='myexp'>
@@ -244,7 +329,6 @@
                 <div>开始我的前端生涯</div>
                 <div>未来还未来，但仍孜孜不倦的探索</div>
             </div>
-            
         </div>
 </body>
-</html>
+</html> 
