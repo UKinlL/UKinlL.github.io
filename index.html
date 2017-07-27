@@ -8,7 +8,6 @@
     <meta name="description" content="区仕发WEB前端工程师的个人简历">
     <meta name="author" content="区仕发,UkinlL">
     <title>Web前端工程师简历</title>
-    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
     <style>
         body,div,ul,li,p,h1,h2,h3,h4,h5{margin: 0;padding: 0;}
         li{list-style: none}
@@ -56,8 +55,11 @@
         .sk1{display: block;border-radius: 100%;height: 15vh;width: 15vh;background:rgb(245, 245, 245);line-height: 15vh;text-align: center;border:2vh solid rgb(205, 205, 245)}
         .sk2{border-right:2vh solid palegoldenrod;border-top:2vh solid palegoldenrod;position: absolute;height: 15vh;width: 15vh;border-top-right-radius: 50%;border;border-top-left-radius: 50%;border;}
 
-        #chart{width: 60vw;height: 60vh;}
-    </style>    
+        #chart{width: 60vw;height: 60vh;float:left}
+        #myskill{float:left;width: 30vw;margin-top: 5vh;}
+        #myskill p{font-size: 2vh;line-height: 4vh;margin: 0;text-align: left;font-weight: bold}
+    </style>
+    <script src="./echarts.simple.min.js"></script>    
     <script>
         window.onload = function(){
             var oSorry =document.getElementById('sorry')
@@ -131,24 +133,12 @@
                 }
             })
 
-            require.config({
-            paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
-            }
-        });
-
-        require(
-            [
-                'echarts',
-                'echarts/chart/bar'
-            ],
-            function (ec) {
-                var myChart = ec.init(document.getElementById('chart')); 
-                
-                var option = {
-                    title:{
-                        text:'个人技能掌握熟练度',
+            var myChart = echarts.init(document.getElementById('chart'));
+            var option = {
+                title:{
+                        text:'个人技能',
                         x : 'center',
+                        show : true
                     },
                     grid:{
                         show:false
@@ -200,14 +190,13 @@
                                 }
                         }
                     ]
-                };
-        
-                myChart.setOption(option); 
-                window.addEventListener("resize",function(){                
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            window.addEventListener("resize",function(){                
                         myChart.resize();
                 });
-            }
-        );
         }
     </script>
 </head>
@@ -220,6 +209,16 @@
             <h3>您好，我的名字叫区（ou）仕发</h3>
             <p>一名正在努力的准前端</p>
             <div id="chart"></div>
+            <div id='myskill'>
+                <h4>自我评价</h4>
+                <p>1、掌握JavaScript，面向对象以及组件化开发有了解和实战经验;</p>
+                <p>2、能够合理的组织页面元素及文档结构，H5/CSS布局，熟悉H5，CSS3规范并能在开发过程中熟练运用；</p>
+                <p>3、熟练掌握使用vue进行组件生产；</p>
+                <p>4、能熟练地将UI设计图转化成HTML页面；</p>
+                <p>5、熟练使用ajax和jsonp进行后台数据处理，与后端配合工作；</p>
+                <p>6、熟练使用webpack进行工作流配置，熟练使用git进行版本控制；</p>
+                <p>7、具备较强的设计感和理解力，学习能力强，头脑清晰，思维敏捷，耐心细致。</p>
+            </div>
             <div id='div11'>
                 <img src="./img/intro1.jpg" alt="">
             </div>
@@ -330,5 +329,9 @@
                 <div>未来还未来，但仍孜孜不倦的探索</div>
             </div>
         </div>
+
+        <script type="text/javascript">
+        
+    </script>
 </body>
 </html> 
